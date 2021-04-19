@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClient} from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private url = 'https://jsonplaceholder.typicode.com/photos';
 
-  constructor(private http: HttpClient) { }
+  private url = 'https://blogtai.herokuapp.com';
 
-  getAll(){
-    return this.http.get(this.url)
+  constructor(private http: HttpClient) {
   }
+
+  getAll() {
+    return this.http.get(this.url + '/api/posts/');
+  }
+
+  getById(id: any) {
+    return this.http.get(this.url + '/api/posts/' + id);
+  }
+
 }
